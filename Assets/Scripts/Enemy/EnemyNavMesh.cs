@@ -5,33 +5,17 @@ using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
 {
-    private Spawner spawner;
-    private Boarder boarder;
-    private Transform plyrTransform;
-    private Transform waitTransform;
     private NavMeshAgent navMeshAgent;
-
-    private Transform targetTransfrom;
+    public Transform plyrTransform;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        spawner = GetComponentInParent<Spawner>();
-
-        boarder = spawner.GetBoarder();
-        plyrTransform = spawner.GetPlyrTransform();
-        waitTransform = spawner.GetWaitTransform();
-
-        targetTransfrom = waitTransform;
+        plyrTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        if (boarder.GetWindowStatus())
-        {
-            targetTransfrom = plyrTransform;
-        }
-
-        navMeshAgent.destination = targetTransfrom.position;
+        navMeshAgent.destination = plyrTransform.position;
     }
 }

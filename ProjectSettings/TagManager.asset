@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Target
-  - 1
+  - Master
   - Enemy
   layers:
   - Default
